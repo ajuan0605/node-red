@@ -1,0 +1,130 @@
+[
+    {
+        "id": "55b9ee23.c7e45",
+        "type": "rpi-gpio in",
+        "z": "f5bb2dbf.a3aa",
+        "name": "Button",
+        "pin": "7",
+        "intype": "tri",
+        "debounce": "25",
+        "read": true,
+        "x": 70,
+        "y": 300,
+        "wires": [
+            [
+                "4fcae5e5.8b7e7c",
+                "e2983533.1b5728"
+            ]
+        ]
+    },
+    {
+        "id": "e2983533.1b5728",
+        "type": "debug",
+        "z": "f5bb2dbf.a3aa",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 250,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4fcae5e5.8b7e7c",
+        "type": "switch",
+        "z": "f5bb2dbf.a3aa",
+        "name": "if input is 1",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 250,
+        "y": 300,
+        "wires": [
+            [
+                "81394ba5.78ca38"
+            ],
+            [
+                "3b0cbd3.4ddfb42"
+            ]
+        ]
+    },
+    {
+        "id": "81394ba5.78ca38",
+        "type": "change",
+        "z": "f5bb2dbf.a3aa",
+        "name": "change to 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 300,
+        "wires": [
+            [
+                "7965a921.d507f8"
+            ]
+        ]
+    },
+    {
+        "id": "7965a921.d507f8",
+        "type": "rpi-gpio out",
+        "z": "f5bb2dbf.a3aa",
+        "name": "led",
+        "pin": "11",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 770,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3b0cbd3.4ddfb42",
+        "type": "change",
+        "z": "f5bb2dbf.a3aa",
+        "name": "change to 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 380,
+        "wires": [
+            [
+                "7965a921.d507f8"
+            ]
+        ]
+    }
+]
